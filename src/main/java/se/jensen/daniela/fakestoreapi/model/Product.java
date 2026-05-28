@@ -1,5 +1,6 @@
 package se.jensen.daniela.fakestoreapi.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,8 +14,10 @@ public class Product {
     public long id;
     public String title;
     public double price;
+    @Column(columnDefinition = "TEXT")
     public String description;
     public String category;
+    @Column(columnDefinition = "TEXT")
     public String image;
 
     public Product() {
