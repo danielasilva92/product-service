@@ -1,5 +1,6 @@
 package se.jensen.daniela.fakestoreapi.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import se.jensen.daniela.fakestoreapi.model.Product;
@@ -14,18 +15,18 @@ public class ProductService {
     private final ProductRepository repository;
     private final RestTemplate restTemplate;
 
+    @Value("${fakestore.base-url:https://fakestoreapi.com}")
+    private String fakeStoreBaseUrl1;
+
     public ProductService(ProductRepository repository) {
         this.repository = repository;
         this.restTemplate = new RestTemplate();
     }
 
     public List<Product> fetchAndSaveProducts() {
-        String url = "https://fakestoreapi.com/products";
+        String url = fakeStoreBaseUrl1 + "/products";
 
-        Product[] response = restTemplate.getForObject(
-                url,
-                Product[].class
-        );
+        Product[] response = restTemplate.getForObject(url, Product[].class);
         List<Product> products = Arrays.asList(response);
         repository.saveAll(products);
         return repository.findAll();
