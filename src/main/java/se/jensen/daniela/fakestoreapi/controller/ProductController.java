@@ -27,6 +27,11 @@ public class ProductController {
         return service.fetchAndSaveProducts();
     }
 
+    @GetMapping("/health")
+    public String health() {
+        return "OK";
+    }
+
     @GetMapping
     public List<Product> getAll() {
         return service.getAllProducts();
