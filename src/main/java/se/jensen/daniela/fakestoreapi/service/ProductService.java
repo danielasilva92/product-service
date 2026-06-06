@@ -27,6 +27,7 @@ public class ProductService {
         String url = fakeStoreBaseUrl1;
 
         Product[] response = restTemplate.getForObject(url, Product[].class);
+        if (response == null) return null;
         List<Product> products = Arrays.asList(response);
         repository.saveAll(products);
         return repository.findAll();
