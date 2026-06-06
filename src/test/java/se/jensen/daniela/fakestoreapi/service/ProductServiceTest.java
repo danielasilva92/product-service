@@ -26,9 +26,10 @@ class ProductServiceTest {
 
         List<Product> fakeProducts = List.of(product1, product2);
 
+        when(repository.count()).thenReturn(2L);
         when(repository.findAll()).thenReturn(fakeProducts);
 
-        //Result
+        //Ract
         List<Product> result = productService.getAllProducts();
 
         //assert
@@ -36,6 +37,7 @@ class ProductServiceTest {
         assertEquals("test product", result.get(0).getTitle());
         assertEquals("test product 2", result.get(1).getTitle());
 
+        verify(repository).count();
         verify(repository).findAll();
     }
 }
