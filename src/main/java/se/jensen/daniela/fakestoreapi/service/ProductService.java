@@ -24,7 +24,7 @@ public class ProductService {
     }
 
     public List<Product> fetchAndSaveProducts() {
-        String url = fakeStoreBaseUrl1 + "/products";
+        String url = fakeStoreBaseUrl1;
 
         Product[] response = restTemplate.getForObject(url, Product[].class);
         List<Product> products = Arrays.asList(response);
@@ -33,6 +33,10 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
+        if (repository.count() == 0) {
+            fetchAndSaveProducts();
+        }
+
         return repository.findAll();
     }
 

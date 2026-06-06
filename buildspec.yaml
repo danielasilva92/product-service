@@ -3,14 +3,14 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Entered pre_build phase
+      - echo Entered prebuild phase
 
 
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started on
       - mvn clean package
-      - echo Build completed
+      - dir target
 
   post_build:
     commands:
@@ -21,4 +21,4 @@ artifacts:
   files:
     - target/fakeStoreAPI-0.0.1-SNAPSHOT.jar
     - Dockerfile
-  discard-paths: no
+  discard-paths: yes

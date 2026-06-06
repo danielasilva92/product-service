@@ -2,7 +2,6 @@ package se.jensen.daniela.fakestoreapi.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.jensen.daniela.fakestoreapi.model.Product;
@@ -22,7 +21,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/fetch")
+    @GetMapping("/fetch")
     public List<Product> fetchProducts() {
         return service.fetchAndSaveProducts();
     }
