@@ -15,7 +15,7 @@ public class ProductService {
     private final ProductRepository repository;
     private final RestTemplate restTemplate;
 
-    @Value("${fakestore.base-url:https://fakestoreapi.com}")
+    @Value("${fakestore.base-url}")
     private String fakeStoreBaseUrl1;
 
     public ProductService(ProductRepository repository) {
